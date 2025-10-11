@@ -32,7 +32,7 @@ $price15 = 750;
 $products = [$product1, $product2, $product3, $product4, $product5, $product6, $product7, $product8, $product9, $product10, $product11, $product12, $product13, $product14, $product15];
 $prices = [$price1, $price2, $price3, $price4, $price5, $price6, $price7, $price8, $price9, $price10, $price11, $price12, $price13, $price14, $price15];
 
-$products2 = ["Обои", "Ванна", "Смеситель", "Бетон", "Радиатор", "Угольник", "Фен строительный", "Дрель", "Перчатки", "Пластиковые окна", "Полиэтилен", "Гипсокартон", "Плинтус"];
+$products2 = ["Обои", "Ванна", "Смеситель", "Бетон", "Радиатор", "Угольник", "Фен строительный", "Штангенциркуль", "Перчатки", "Пластиковые окна", "Полиэтилен", "Гипсокартон", "Плинтус"];
 $prices2 = [190, 4000, 5000, 790, 1015, 200, 1200, 990, 105, 15500, 1300, 1500, 1800];
 
 $items[] = ['Краска белая', 170];
@@ -56,6 +56,18 @@ $goods[] = ['name' => 'Рекуператор', 'price' => 12500];
 $goods[] = ['name' => 'Рубероид', 'price' => 5400];
 $goods[] = ['name' => 'Мембрана', 'price' => 5600];
 $goods[] = ['name' => 'Пенопласт', 'price' => 5800];
+
+$goodsRandom = [];
+$allProducts = array_merge($products, $products2);
+$allPrices = array_merge($prices, $prices2);
+
+for ($i = 0; $i < 45; $i++) {
+    $randomIndex = array_rand($allProducts);
+    $goodsRandom[] = [
+        "name" => $allProducts[$randomIndex],
+        "price" => $allPrices[$randomIndex]
+    ];
+}
 
 ?>
 
@@ -108,3 +120,47 @@ $goods[] = ['name' => 'Пенопласт', 'price' => 5800];
 </div>
 
 
+<div class="product-list">;
+    <h2>Случайные товары </h3>
+<?php foreach ($goodsRandom as $item) { ?>
+        <div class="product-card">
+            <div class="product-name"><?= $item['name']?></div>
+            <div class="product-price"><?= $item['price']?></div>
+        </div>
+    <?php } ?>
+</div>
+
+
+ <h3>Товары дороже 100 рублей </h3>
+<div class="product-list">
+ <?php foreach ($goodsRandom as $item) { ?>
+        <div class="product-card">
+            <div class="product-name"><?= $item['name']?></div>
+            <div class="product-price"><?= $item['price']?></div>
+        </div>
+    <?php } ?>
+</div>   
+
+
+
+<h3>Товары дороже 1000 рублей </h3>
+<div class="product-list">
+    <?php foreach ($goodsRandom as $item) { ?>
+        <div class="product-card">
+            <div class="product-name"><?= $item['name']?></div>
+            <div class="product-price"><?= $item['price']?></div>
+        </div>
+    <?php } ?>
+</div>   
+
+
+
+<h3>Товары от 100 до 1000 рублей </h3>
+<div class="product-list">
+<?php foreach ($goodsRandom as $item) { ?>
+        <div class="product-card">
+            <div class="product-name"><?= $item['name']?></div>
+            <div class="product-price"><?= $item['price']?></div>
+        </div>
+    <?php } ?>
+</div>   
