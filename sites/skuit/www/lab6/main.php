@@ -35,6 +35,8 @@ $prices = [$price1, $price2, $price3, $price4, $price5, $price6, $price7, $price
 $products2 = ["Обои", "Ванна", "Смеситель", "Бетон", "Радиатор", "Угольник", "Фен строительный", "Штангенциркуль", "Перчатки", "Пластиковые окна", "Полиэтилен", "Гипсокартон", "Плинтус"];
 $prices2 = [190, 4000, 5000, 790, 1015, 200, 1200, 990, 105, 15500, 1300, 1500, 1800];
 
+$items = [];
+
 $items[] = ['Краска белая', 170];
 $items[] = ['Саморезы', 30];
 $items[] = ['Миксер', 5400];
@@ -68,7 +70,6 @@ for ($i = 0; $i < 45; $i++) {
         "price" => $allPrices[$randomIndex]
     ];
 }
-
 ?>
 
 
@@ -120,7 +121,7 @@ for ($i = 0; $i < 45; $i++) {
 </div>
 
 
-<div class="product-list">;
+<div class="product-list">
     <h2>Случайные товары </h3>
 <?php foreach ($goodsRandom as $item) { ?>
         <div class="product-card">
@@ -131,36 +132,40 @@ for ($i = 0; $i < 45; $i++) {
 </div>
 
 
- <h3>Товары дороже 100 рублей </h3>
 <div class="product-list">
- <?php foreach ($goodsRandom as $item) { ?>
-        <div class="product-card">
-            <div class="product-name"><?= $item['name']?></div>
-            <div class="product-price"><?= $item['price']?></div>
+<h3>Товары дороже 100 рублей </h3>
+    <?php foreach ($goodsRandom as $goods) { ?>
+    <?  if ($goods['price'] > 100) {   ?>
+    <div class="product-card">
+            <div class="product-name"><?= $goods['name']?></div>
+            <div class="product-price"><?= $goods['price']?></div>
         </div>
     <?php } ?>
-</div>   
+    <?php } ?>
+</div>  
 
 
-
+<div class="product-list">
 <h3>Товары дороже 1000 рублей </h3>
-<div class="product-list">
-    <?php foreach ($goodsRandom as $item) { ?>
-        <div class="product-card">
-            <div class="product-name"><?= $item['name']?></div>
-            <div class="product-price"><?= $item['price']?></div>
+    <?php foreach ($goodsRandom as $goods) { ?> 
+      <?  if ($goods['price'] > 1000) {   ?>  
+    <div class="product-card">
+            <div class="product-name"><?= $goods['name']?></div>
+            <div class="product-price"><?= $goods['price']?></div>
         </div>
+    <?php } ?>
     <?php } ?>
 </div>   
 
 
-
+<div class="product-list">
 <h3>Товары от 100 до 1000 рублей </h3>
-<div class="product-list">
-<?php foreach ($goodsRandom as $item) { ?>
+<?php foreach ($goodsRandom as $goods) { ?>
+    <?  if (($goods['price'] > 100) and ($goods['price'] < 1000)) {   ?> 
         <div class="product-card">
-            <div class="product-name"><?= $item['name']?></div>
-            <div class="product-price"><?= $item['price']?></div>
+            <div class="product-name"><?= $goods['name']?></div>
+            <div class="product-price"><?= $goods['price']?></div>
         </div>
     <?php } ?>
-</div>   
+    <?php } ?>
+</div>
